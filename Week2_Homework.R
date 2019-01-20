@@ -7,9 +7,9 @@ library(tidyverse)
 wings_raw <- read_tsv("PureLines_New.dat", col_names = TRUE)
 
 
-#Creating a variable to remove uninformative/duplicate tags (file number, file path on lab PC, landmarks for creating spline, date and time file was made, sex (this tag is always MF, not infomrative), Perp (tag of imager used to track undergraduate work, spliner introduces error))
+#Creating a variable to remove uninformative/duplicate tags (file number, file path on lab PC, landmarks for creating spline, date and time file was made, sex (this tag is always MF, not informative), Perp (tag of imager used to track undergraduate work, spliner introduces error))
 Crap_Col <- c("CPFile","Crap", "O1x", "O1y", "O2x", "O2y", "Date", "Time", "Tags", "Sex", "Perp")
-
+## BMB: nice.
 
 #Cleaning the raw data to extract important info from file names and create unique fly IDs within each line (can be used to select flies for genotyping later)
 wings <- (wings_raw 
@@ -24,7 +24,21 @@ wings$Line <- factor(wings$Line)
 levels(wings$Real_Sex) <- c("f", "m")
 wings$Sex <- factor(wings$Real_Sex)
 wings$Scale <- factor(wings$Scale)
+## BMB: why setting this on wings_raw ... ??
 levels(wings_raw$Scale) <- c("0.01134", "0.00694")
+
+## BMB: slightly safer to do this with factor()
+wings <- (wings
+    ## don't need explicit factor levels when they're alphabetical anyway?
+    %>% mutate(Line=factor(Line),
+    ## curious: why levels not in numeric order?   
+               Scale=factor(Scale,levels=c("0.01134","0.00694")),
+               Sex=factor(Real_Sex,levels=c("f","m")))
+)
+               
+               
+               
+
 
 
 #I want to make sure that the fly IDs are unique within each line and sex. Should not be more than 1  
@@ -34,6 +48,11 @@ print(wings
       %>% summarise(count = n())
       %>% filter(count > 1))
 
+## BMB: do this to check automatically ...
+stopifnot(all(with(wings,table(Line,Fly_ID,Sex)) %in% c(0,1)))
+
+## why not reorder lines by CS?
+wings <- wings %>% mutate(Line=fct_reorder(Line,CS))
 #Using a boxplot I want to look for outliers in centroid size 
 ggplot(wings, aes(y = CS, x = Line, color = Sex)) + 
   geom_boxplot()
@@ -52,8 +71,13 @@ print(wings
 #removing the outlier from the data set 
 clean_wings <- wings[!(wings$Fly_ID == "3_09.tif" & wings$Real_Sex == "f" & wings$Line == "ef96"),]
 
+## or
+clean_wings <- filter(wings, !(Fly_ID=="3_09.tif" & Real_Sex=="f" & Line == "ef96"))
+
 #checking the boxplot. The outlier is gone!!!! 
 ggplot(clean_wings, aes(y = CS, x = Line, color = Sex)) + 
   geom_boxplot()
 
+## BMB: nice.
+## score: 2.5 (2 = fine, 3=excellent)
 
