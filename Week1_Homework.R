@@ -25,12 +25,17 @@ wings2 <- separate(wings1, "File", into= c("Crap", "Perp", "Line", "Slide", "Sex
 wings3 <- wings2[, -c(1)]
 #names(wings3)
 
+## JD: As we said in class, this could all be done with one clean pipeline
+## Don't rename things in loops; either keep the names simple (my preference)
+## or move forward consistently
 #Making the wings object something easier to type
 wings <- wings3
 #names(wings)
 #summary(wings)
 
 #Making line and sex and scale factors 
+# JD: This scares me; you shouldn't be keeping track of your labeling system in code
+# Have a table or something
 levels(wings$Line) <- c("ef81", "ef96", "ef43", "zi192", "zi251", "zi418")
 wings$Line <- factor(wings$Line)
 levels(wings$Sex) <- c("f", "m")
@@ -45,3 +50,6 @@ LineMean_Size <- (wings
       %>% summarise(mean = mean(CS))
 )
 LineMean_Size
+
+## JD: score 2. (1=poor, 2=fine, 3=excellent)
+
