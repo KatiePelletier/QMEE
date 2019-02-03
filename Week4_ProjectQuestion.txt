@@ -1,0 +1,20 @@
+With my data, I want to ask the questions: 1) Are the three selected
+lines diffrent from each other in shape and size? and 2) are they
+representative of the spread we see within low altitude and high
+altitude populations?
+
+For the first question, I do think that these lines are unique from one
+another for both size and shape. I know that testing this statistically
+is a classification problem and I have been doing some reading and
+looking at other examples from the lab on how to solve this but do not
+have a good grasp of the statistics yet. The lab has used linear
+discriminants analysis in the past to work through these problems and
+the analysis of a similar dataset. I understand this on a very basic level but
+have not had the time to really engage with this problem.
+
+I think that I can use the same statical approches to also answer my
+second question. That is, instead of asking how diffrent one line is
+from the other selected lines, I am asking how diffrent each selected
+line is from the population. This will be more complicated because there
+is an additional co-variate added in this data set as the wing
+coordinate data was collected by two diffrent grad students. 
