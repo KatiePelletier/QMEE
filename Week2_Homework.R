@@ -37,8 +37,9 @@ levels(wings_raw$Scale) <- c("0.01134", "0.00694")
 
 #I want to make sure that the fly IDs are unique within each line (can be repeated between lines becuase slide 1, fly 1 exists for every genotype)
 print(wings
-      %>% group_by(Line)
-      %>% unique(Fly_ID))
+      %>% group_by(Line, Fly_ID)
+      %>% summarize(Fly_ID)
+)
 
 #Using a boxplot I want to look for outliers in centroid size 
 ggplot(wings, aes(y = CS, x = Line, color = Sex)) + 
