@@ -58,9 +58,15 @@ wings <- (wings
 #I want to make sure that the fly IDs are unique within each line and sex. Should not be more than 1  
 #The computer creates these numbers but the starting point has to be set by the human imaging the slide
 print(wings
+<<<<<<< HEAD
+      %>% group_by(Line, Fly_ID)
+      %>% summarize(Fly_ID)
+)
+=======
       %>% group_by(Line, Fly_ID, Sex)
       %>% summarise(count = n())
       %>% filter(count > 1))
+>>>>>>> 8901daaeb43ae8a74cc261c12bd15d96af4a563f
 
 ## BMB: do this to check automatically ...
 stopifnot(all(with(wings,table(Line,Fly_ID,Sex)) %in% c(0,1)))
