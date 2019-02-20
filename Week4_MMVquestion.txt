@@ -1,0 +1,18 @@
+If a random person is tested from the population, there is a 16.8%
+chance that that person will test positive for the virus.
+
+## BMB: we were you hoping you would write out some of the computations that led you to this conclusion??
+
+What I told my friend would depend on if they took the test randomly or
+not. If they were part of the random sampling from the first half of
+this question, I would tell them that the probability that they have the
+virus given their positive test result would only be about 17%. However,
+most people getting a test for the virus will self select for the test
+because they are already fitting a lot of mathematical models. In this
+case, the chance that they have a true positive result is higher because
+it is not a random sample. Using this additional information, I would
+tell them that it is more likely that this is a true positive result. I
+would tell them to think about if they have other symptoms of MMV when
+interpreting the positive result.
+
+## BMB: that's very sensible.

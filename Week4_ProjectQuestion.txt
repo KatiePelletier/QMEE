@@ -1,0 +1,28 @@
+With my data, I want to ask the questions: 1) Are the three selected
+lines different from each other in shape and size? and 2) are they
+representative of the spread we see within low altitude and high
+altitude populations?
+
+## BMB: "are they different" is a tricky question, because the answer is "yes". To make it a scientifically interesting/valid question (I claim), you have to say more about *how much* you expect them to differ, and why that would (or would not) be interesting.
+
+For the first question, I do think that these lines are unique from one
+another for both size and shape. I know that testing this statistically
+is a classification problem and I have been doing some reading and
+looking at other examples from the lab on how to solve this but do not
+have a good grasp of the statistics yet. The lab has used linear
+discriminant analysis in the past to work through these problems and
+the analysis of a similar dataset. I understand this on a very basic level but
+have not had the time to really engage with this problem.
+
+## BMB: uncertainty is fine, you're in the class to learn. As you already know, it's easier to test for differences in size [a one-dimensional characteristic] than for differences in shape. One analysis you could look into is "permutational multivariate ANOVA" (e.g. the 'adonis()' function from the vegan package). The methods you would use depend a bit on whether you are asking (1) *is there a clear difference among groups* [i.e. reject the null hypothesis that there are no differences] or (2) *what* are the differences among groups?
+
+I think that I can use the same statistical approaches to also answer my
+second question. That is, instead of asking how different one line is
+from the other selected lines, I am asking how different each selected
+line is from the population. This will be more complicated because there
+is an additional co-variate added in this data set as the wing
+coordinate data was collected by two different grad students.
+
+## BMB: OK. Might also have to think about whether you're testing the lines separately or as a group?
+
+score 2.5 (combined)
