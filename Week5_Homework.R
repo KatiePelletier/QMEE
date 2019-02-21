@@ -1,6 +1,7 @@
 library(tidyverse)
 
 
+
 #Shape and size data from the 6 seleceted lines 
 load("clean_wings.rda")
 #For this assignment HA = high altitude and LA = low altitdude
