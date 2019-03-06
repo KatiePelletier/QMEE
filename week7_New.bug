@@ -1,0 +1,14 @@
+model{
+	for (i in 1:N){
+		#defining effects 
+		B_0[i] <- b_Alt[Alt[i]]
+		Sexeff[i] <- b_Sex*(Sex[i] -1)
+		size[i] <- B_0[i] + Sexeff[i]
+		CS[i] ~ dnorm(size[i], 0.001)
+	}
+	#define priors for this model (this needs to be in a loop?)
+	b_Alt[1] ~ dnorm(0.00, 0.001)
+	b_Alt[2] ~ dnorm(0.00, 0.001)
+	b_Sex ~ dnorm(-0.56, 0.001)
+}
+
