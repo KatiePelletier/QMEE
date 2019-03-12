@@ -1,13 +1,11 @@
 library(tidyverse)
 
-
-
 #Shape and size data from the 6 seleceted lines 
 load("clean_wings.rda")
 #For this assignment HA = high altitude and LA = low altitdude
 
 
-#Hypthesis 1: The altitude the population originates from does have an effect on wing size
+#Hypthesis 1: The altitude the population originates from does have an effect on wing size ## JD: You should just skip this part
 #Flies from a HA population are predicted to have larger wings than flies from a LA population
 #Going to shuffle wing size (CS) and calculate the diffrence between the means
 
@@ -15,7 +13,12 @@ load("clean_wings.rda")
 #Not sure how to fix this problem but I think the code is correct otherwise. 
 #Commented out this section for the homework to advoid a lot of error messages 
 
+## JD: I'm confused: don't see the commented-out code
+
 set.seed(1203)
+
+## JD: Avoid magic numbers, e.g., give 1000 a name
+## reps <- 1000
 CS_perm <- numeric(1000)
 
 #loop to calculate vector
@@ -58,6 +61,8 @@ LA_obs_mean <- mean(LA_obs_wings$CS)
 #Then, I will select only female flies again and compute the magitude of diffrence in the means. 
 #From this I will ask how many times the permutated magnitude is larger than the observed. 
 
+## JD: Logic here is not clear to me. What choice did you make about 
+## reducing shape to a thing you can take the mean of.
 
 #Calculate mean shape of HA and mean shape of LA in the observed data 
 #first subseting the data and extracting the landmarks (cols 6:101) as a matrix, then calculating
@@ -108,7 +113,13 @@ PD_all <- c(PD_observed, PD_perm)
 
 #calculating the p-value 
 #From this, I would say that Sex doesn't matter (or at least doesn't have a large effect) for the observed change in shape.
+## JD: You seem to be implying that your P value doesn't indicate significance
+## Both of these conclusions would be wrong. The _only_ thing we infer 
+## directly from a NS P value is that we haven't seen something clearly
+## in this case the sign of difference between mystery means
+
 #However, the distribution (below) makes me question my results. 
+## JD: Is there a reason you didn't multiply by 2 here?
 p_val <- mean(PD_all >= PD_observed)
 p_val
 
@@ -116,3 +127,7 @@ p_val
 
 hist(PD_all)
 abline(v=PD_observed,col="red")
+
+## I'm not seeing why you seem to think P is not significant. My P value matches the histogram observation.
+
+## JD Grade (2/3): good
