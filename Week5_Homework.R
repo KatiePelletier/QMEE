@@ -128,6 +128,6 @@ p_val
 hist(PD_all)
 abline(v=PD_observed,col="red")
 
-## I'm not seeing why you seem to think P is not significant. My P value matches the histogram observation.
+## I'm not seeing why you seem to think P is not significant. My P value (0.001) matches the histogram observation.
 
 ## JD Grade (2/3): good
