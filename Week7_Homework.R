@@ -32,7 +32,8 @@ wings$Alt <- as.numeric(wings$Alt)
 
 #Model
 #Had to hard code the Alt because the loop wouldn't work. I don't know if what I did was right
-bayesmod <- with(wings, jags(model.file='Week7_New.bug'
+## Make sure your case matches in filenames
+bayesmod <- with(wings, jags(model.file='week7_New.bug'
                           , parameters=c("b_Sex", "b_Alt")
                           , data = list('CS' = CS, 'Alt'=Alt, 'Sex'=Sex, 'N'=N)
                           , n.chains = 4
@@ -49,5 +50,7 @@ plot(bayesmod)
 traceplot(bayesmod)
 
 #This shows the eggects more clearly, although both sex and LA overlap zero because of the large CI 
-dwplot(bayesmod)
+## JD: doesn't work for me unfortunately. Version problems.
+## dwplot(bayesmod)
 
+## Grade 2/3 Good

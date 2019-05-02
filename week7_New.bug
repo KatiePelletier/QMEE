@@ -7,8 +7,10 @@ model{
 		CS[i] ~ dnorm(size[i], 0.001)
 	}
 	#define priors for this model (this needs to be in a loop?)
+	# JD: absolutely fine without a loop, but it seems weird that loop won't work
 	b_Alt[1] ~ dnorm(0.00, 0.001)
 	b_Alt[2] ~ dnorm(0.00, 0.001)
+	## JD: This seems like a very specific prior
 	b_Sex ~ dnorm(-0.56, 0.001)
 }
 
