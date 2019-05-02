@@ -18,17 +18,17 @@ mod_lmm1 <- lmer(CS ~ Sex + Alt + (1 | Alt:Line), data = wings)
 
 summary(mod_lmm1)
 
-#from class notes, some diognositics
+#from class notes, some diagnostics
 #fitted vs residual looks good
 plot(mod_lmm1)
 #fitted-location plot also looks ok. 
 plot(mod_lmm1, sqrt(abs(resid(.))) ~ fitted(.),
      type=c("p","smooth"), col.line="red")
 
-# I see a significant diffrence between the groups 
+# I see a significant difference between the groups 
 ## JD: Don't lead with this. Say what you see and stick the significance (or clarity) in as you go.
 Anova(mod_lmm1)
-#The plots shouw the expected response with females and high alt flies being bigger. 
+#The plots show the expected response with females and high alt flies being bigger. 
 ## JD: Good
 plot(allEffects(mod_lmm1))
 
